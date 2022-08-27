@@ -1,11 +1,12 @@
 // import Notes from "./pages/Notes/Notes";
-import Seals from "./pages/Seals/Seals";
+import { Link, Outlet } from "react-router-dom";
 
 export default function Home() {
     return (
         <div className="home">
-            {/* <Notes /> */}
-            <Seals />
+            <Link to={"/notes"}>Notes</Link>
+            <Link to={"/seals"}>Seals</Link>
+            <Outlet />
         </div>
     );
 }
