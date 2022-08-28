@@ -12,6 +12,7 @@ const TodaysCard = ({ day }) => {
   const [banner] = useStorageByDay("picture", day);
 
   const saveHandler = () => {
+    console.log(dailyCard);
     const payload = {
       id: uuid(),
       banner: banner,

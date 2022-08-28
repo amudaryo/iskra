@@ -1,13 +1,11 @@
-import { Container, CssVarsProvider } from "@mui/joy";
+import { CssVarsProvider } from "@mui/joy";
 import "./App.css";
 import DailyCard from "./DailyCard";
 import DatePickerPage from "./components/DatePicker/DatePicker";
-import Logo from "./components/Logo/Logo";
 import { useStorage } from "./hooks/useLocalStorage";
 import { theme } from "./theme";
-import MiniDailyCards from "./components/MiniDailyCards/MiniDailyCards";
 import { useEffect, useState } from "react";
-import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import TodaysCard from "./TodaysCard";
 
