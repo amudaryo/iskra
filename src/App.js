@@ -1,30 +1,24 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Container, CssVarsProvider } from "@mui/joy";
 import "./App.css";
-import Home from "./Home";
-import Logo from "./pages/Logo/Logo";
-
-import DatePickerPage from "./pages/DatePicker/DatePicker";
-import Notes from "./pages/Notes/Notes";
-import Seals from "./pages/Seals/Seals";
+import DailyCard from "./DailyCard";
+import DatePickerPage from "./components/DatePicker/DatePicker";
+import Logo from "./components/Logo/Logo";
+import { useStorage } from "./hooks/useLocalStorage";
+import { theme } from "./theme";
 
 function App() {
-    return (
-        <div className="App">
-            <Logo />
-            <DatePickerPage />
-
-            {/* <Home /> */}
-
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Home />}>
-                        <Route path="/notes" element={<Notes />} />
-                        <Route path="/seals" element={<Seals />} />
-                    </Route>
-                </Routes>
-            </BrowserRouter>
-        </div>
-    );
+  const [dailyCards] = useStorage("dailyCards");
+  return (
+    <CssVarsProvider theme={theme}>
+      <div className="App">
+        <DatePickerPage />
+        <Container maxWidth="sm">
+          <Logo />
+          <DailyCard cards={dailyCards} />
+        </Container>
+      </div>
+    </CssVarsProvider>
+  );
 }
 
 export default App;

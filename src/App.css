@@ -1,4 +1,7 @@
-.home {
+.logo {
+    font-family: "Silkscreen", cursive;
+    font-size: 48px;
     display: flex;
     justify-content: center;
+    margin: 12px;
 }
