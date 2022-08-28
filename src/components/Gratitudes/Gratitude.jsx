@@ -4,6 +4,7 @@ import { Typography } from "@mui/joy/";
 const Gratitude = ({ gratitude }) => {
   return (
     <Card
+      row
       variant="outlined"
       color="primary"
       sx={{
@@ -14,7 +15,7 @@ const Gratitude = ({ gratitude }) => {
         m: "4px",
       }}
     >
-      <Typography>{gratitude.text}</Typography>
+      <Typography>✨ {gratitude.text}</Typography>
     </Card>
   );
 };

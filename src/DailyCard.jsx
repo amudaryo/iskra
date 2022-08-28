@@ -1,46 +1,26 @@
 import { Button, Card, CardOverflow } from "@mui/joy";
-import { useEffect, useState } from "react";
 import Banner from "./components/Banner/Banner";
 import Gratitudes from "./components/Gratitudes/Gratitudes";
-import MiniDailyCards from "./components/MiniDailyCards/MiniDailyCards.jsx";
 import Thoughts from "./components/Thoughts/Thoughts";
-import { useStorage, useStorageByDay } from "./hooks/useLocalStorage";
-import { v4 as uuid } from "uuid";
+// import { useStorageByDay } from "./hooks/useLocalStorage";
 
-const DailyCard = ({ cards }) => {
-  const [today] = useStorage("today");
-  const [activeDays, setActiveDays] = useState([]);
-  const [dailyCard, setDailyCard] = useStorageByDay("dailyCards", today);
-  const [dailyGratitudes] = useStorageByDay("gratitudes", today);
-  const [thoughts] = useStorageByDay("thoughts", today);
-  const [banner] = useStorageByDay("picture", today);
-
-  const saveHandler = () => {
-    const payload = {
-      id: uuid(),
-      banner: banner,
-      gratitudes: dailyGratitudes,
-      thoughts: thoughts,
-    };
-    setDailyCard(payload);
-  };
-
-  useEffect(() => {
-    setActiveDays(Object.keys(cards));
-  }, [cards]);
+const DailyCard = ({ day, today, cards }) => {
+  // const [dailyCard, setDailyCard] = useStorageByDay("dailyCards", day);
+  // const saveHandler = () => {
+  //   dailyCard.sparkly = !dailyCard.sparkly;
+  //   setDailyCard({ ...dailyCard });
+  // };
 
   return (
     <Card variant="outlined">
       <CardOverflow>
-        <Banner day={today} />
+        <Banner day={day} today={today} cards={cards} />
       </CardOverflow>
 
-      <Gratitudes />
-      <Thoughts day={today} />
-      <Button variant="soft" onClick={saveHandler}>
-        Save today's card
-      </Button>
-      {activeDays && <MiniDailyCards activeDays={activeDays} cards={cards} />}
+      <Gratitudes day={day} today={today} cards={cards} />
+      <Thoughts day={day} today={today} cards={cards} />
+      {/* <Button onClick={saveHandler}>Sparkly</Button> */}
+      <Button variant="soft">Add to favorites</Button>
     </Card>
   );
 };

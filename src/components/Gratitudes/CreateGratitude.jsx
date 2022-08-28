@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/joy/";
+import { TextField } from "@mui/joy/";
 import { useState } from "react";
 import { useStorageByDay } from "../../hooks/useLocalStorage";
 import { v4 as uuid } from "uuid";
@@ -21,9 +21,6 @@ const CreateGratitude = ({ day, ...props }) => {
         onChange={textHandler}
         placeholder="Today, I am grateful for..."
       />
-      {/* <Button color="danger" onClick={props.onClose}>
-          Let me think about it more
-        </Button> */}
     </form>
   );
 };
